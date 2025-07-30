@@ -8,19 +8,16 @@ export default function App() {
   const [tasks, setTasks] = useState(() => JSON.parse(localStorage.getItem('tasks')) || [])
   const [filter, setFilter] = useState('All')
 
-  // ✅ Save tasks in LocalStorage
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks])
 
-  // ✅ Ask for notification permission on load
   useEffect(() => {
     if (Notification.permission !== 'granted') {
       Notification.requestPermission()
     }
   }, [])
 
-  // ✅ Schedule notifications
   useEffect(() => {
     const timers = []
 
@@ -30,9 +27,7 @@ export default function App() {
         const now = Date.now()
 
         if (reminderTime > now) {
-          // First reminder
           timers.push(setTimeout(() => sendNotification(task.title), reminderTime - now))
-          // Second reminder after 1 min
           timers.push(setTimeout(() => sendNotification(task.title + ' (Second Reminder)'), (reminderTime - now) + 60000))
         }
       }

@@ -23,6 +23,10 @@ It’s designed to look simple with subtle animations, smart reminders, and an e
 - Vanilla CSS 
 - Browser Notification – sends reminders directly to your device
 
+## Website Link
+```bash
+https://nathantaskapp.netlify.app/
+```
 ---
 
 ## Getting Started
